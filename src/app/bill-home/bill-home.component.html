@@ -1,0 +1,62 @@
+<div class="mt-2">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header bg-primary text-center text-white">Item</div>
+                <div class="card-body">
+                    <form #f="ngForm" (ngSubmit)="save(f.value)">
+                        <div class="form-group">
+                            <label for="itemName">Item name<span class="text-danger"><sup>*</sup></span></label>
+                            <input 
+                            #itemName="ngModel" ngModel name="itemName" id="itemName" type="text" class="form-control"
+                            placeholder="Enter item name..." required>
+                            <div *ngIf="itemName.invalid && (itemName.dirty || itemName.touched)">
+                                <span *ngIf="itemName.errors.required" class="text-danger small">
+                                    Name is required.
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="itemValue">Item value<span class="text-danger"><sup>*</sup></span></label>
+                            <input
+                            #itemValue="ngModel" ngModel name="itemValue" id="itemValue" type="number" class="form-control"
+                            placeholder="Enter item value..." required>
+                            <div *ngIf="itemValue.invalid && (itemValue.dirty || itemValue.touched)">
+                                <span *ngIf="itemValue.errors.required" class="text-danger small">
+                                    Value is required.
+                                </span>
+                            </div>
+                           
+                        </div>
+                        <div class="form-group">
+                            <label for="paidBy">Paid by<span class="text-danger"><sup>*</sup></span></label>
+                            <select #paidBy="ngModel" ngModel id="paidBy" name="paidBy" class="form-control" required>
+                                <option value=""></option>
+                                <option *ngFor="let m of groupMembers" [value]="m"> {{ m }}</option>
+                            </select>
+                            <div *ngIf="paidBy.invalid && (paidBy.dirty || paidBy.touched)">
+                                <span *ngIf="paidBy.errors.required" class="text-danger small">
+                                    Paid is required.
+                                </span>
+                            </div>
+                        </div>
+                        <button [disabled]="!f.valid" class="btn btn-success btn-block">Save</button>
+                    </form>
+                </div> 
+            </div>
+        </div>
+
+        <!-- <div class="col-sm-6">
+            <div  *ngIf="itemName">
+                <ul class="list-group">
+                    {{itemName}}
+                    <li class="list-group-item list-group-item-info">{{itemName[0]}} - {{itemName[1]}}</li>
+                </ul>
+            </div>
+            
+        </div> -->
+        
+    </div>
+</div>
+
+

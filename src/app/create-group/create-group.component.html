@@ -1,0 +1,58 @@
+<div class="mt-2">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="memberName">Enter member names<span class="text-danger"><sup>*</sup></span></label>
+                <input (keyup.enter)="memberNames(memberName)" #memberName name="memberName" 
+                type="text" class="form-control" id="memberName" placeholder="Enter member name and press enter..." required>
+                <span class="text-info small">
+                    Enter name and press enter.
+                </span>
+                <div *ngIf="memberName.invalid && (memberName.dirty || memberName.touched)">
+                    <span *ngIf="memberName.errors.required" class="text-danger small">
+                        Group members is required.
+                    </span>
+                </div>
+            </div>
+            <ul class="list-group">
+                <li *ngFor="let m of groupMemberNames" class="list-group-item d-flex justify-content-between align-items-center">
+                   {{ m }}
+                    <span (click)="removeMembers(m)" class="badge badge-danger">&times;</span>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header bg-primary text-center text-white">Create Group</div>
+                <div class="card-body">
+                    <form #f="ngForm" (ngSubmit)="createGroup(f.value)">
+                        <div class="form-group">
+                            <label for="groupName">Enter group name<span class="text-danger"><sup>*</sup></span></label>
+                            <input 
+                            #groupName="ngModel" ngModel name="groupName" id="groupName" type="text" class="form-control"
+                            placeholder="Enter group name..." required>
+                            <div *ngIf="groupName.invalid && (groupName.dirty || groupName.touched)">
+                                <span *ngIf="groupName.errors.required" class="text-danger small">
+                                    Group name is required.
+                                </span>
+                            </div>
+                            <label for="groupPassword">Enter group password<span class="text-danger"><sup>*</sup></span></label>
+                            <input
+                            #groupPassword="ngModel" ngModel name="groupPassword" id="groupPassword" type="password" class="form-control"
+                            placeholder="Enter group password..." required>
+                            <div *ngIf="groupPassword.invalid && (groupPassword.dirty || groupPassword.touched)">
+                                <span *ngIf="groupPassword.errors.required" class="text-danger small">
+                                    Group password is required.
+                                </span>
+                            </div>
+                        </div>                       
+                        <button [disabled]="!f.valid" class="btn btn-success btn-block mt-2">Create</button>
+                    </form>
+                </div>
+            </div>
+        </div>   
+    </div>    
+</div>
+
+
+

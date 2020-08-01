@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Bill Divider</a>
+    <a class="nav-link" href="#"><i class="fa fa-home" aria-hidden="true"></i></a> <!-- Home -->
+    <ng-container *ngIf="groupName">
+      <a class="nav-link" routerLink="/activities"><i class="fa fa-list-ul" aria-hidden="true"></i></a> <!-- Activities -->
+      <a (click)="logout()" class="nav-link"><i class="fa fa-sign-out" aria-hidden="true"></i></a> <!-- Logout -->
+    </ng-container>
+    <!-- <ng-template #loginsignup> -->
+    <a *ngIf="!groupName" class="dropdown"> <!-- Login / Sign up -->
+      <div class="dropbtn nav-link"><i class="fa fa-power-off" aria-hidden="true"></i></div>
+      <div class="dropdown-content">
+        <a routerLink="/login">Login</a>
+        <a routerLink="/signup">Sign up</a>
+      </div>
+    </a>
+    <!-- </ng-template> -->
+  </nav>

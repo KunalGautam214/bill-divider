@@ -1,0 +1,42 @@
+<div class="mt-3">
+    <a routerLink="/items" class="btn btn-primary mb-2 btn-block btn-lg"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+    <div class="row">
+        <div class="col-sm-6">
+            <div *ngFor="let item of indivisualSum | keyvalue">
+                <div class="alert alert-info">Paid by: {{item.key}} - Rs. {{item.value}}</div>
+            </div>
+            <button type="button" class="btn btn-success btn-block" (click)="divideEqually()">Divide Equally</button>
+            <div *ngIf="isShow" class="mt-2">
+                <div class="card">
+                    <div class="card-header bg-primary text-center text-white">Details</div>
+                    <div class="card-body">
+                        <p *ngFor="let l of lentName; let j=index">Lent name: {{l}}, <span class="text-success">+{{lentdiff[j] | number: '0.2-3'}}</span></p>
+                        <p *ngFor="let n of name; let i=index">
+                            Borrower name: {{n}}, 
+                            <span class="text-danger">-{{diff[i] | number: '0.2-3'}}</span>
+                            <span *ngIf="lentNameLen == 1">
+                                <span *ngFor="let lent of lentName" class="text-success"> (+{{lent}})</span>
+                            </span>
+                            <span *ngIf="lentNameLen > 1">
+                                <span *ngFor="let lent of lentName; let j=index" class="text-success"> {{lentdiff[j] | number: '0.2-3'}} (+{{lent}})</span>
+                            </span>    
+                        </p>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+        <div class="col-sm-6">
+            <!-- <div *ngFor="let a of reverseAmount; let i = index" class="alert alert-warning">
+                {{ a.itemName }} - {{ a.itemValue }} : {{reverseDate[i] | date:'medium'}}
+            </div> -->
+            <ul class="list-group">
+                <li *ngFor="let a of reverseAmount; let i = index" class="list-group-item list-group-item-info d-flex justify-content-between align-items-center">
+                    {{ a.itemName }} - Rs.{{ a.itemValue }} : {{a.paidBy}} : {{reverseDate[i] | date:'shortDate'}}
+                    <!-- <span (click)="removeItem(a)" class="badge badge-danger">&times;</span> -->
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

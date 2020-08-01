@@ -1,0 +1,20 @@
+.jumbotron {
+    margin-bottom: 0px;
+}
+
+.icon-style {
+    color: white;
+    margin-right: 10px;
+}
+
+.icon-style:hover {
+    color: wheat;
+}
+
+.link-color {
+    cursor: pointer;
+}
+
+.link-color:hover {
+    color: wheat !important;
+}
